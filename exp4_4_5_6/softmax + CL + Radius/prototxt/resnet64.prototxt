@@ -2468,56 +2468,25 @@ layer {
   top: "softmax_loss"
 }
 layer {
-  name: "shared_center_loss"
-  type: "SharedCenterLoss"
+  name: "center_loss"
+  type: "CenterLoss"
   bottom: "fc5"
   bottom: "label"
-  top: "shared_center_loss"
+  top: "center_loss"
   top: "count"
   param {
-    name:"center"
     lr_mult: 1
     decay_mult: 1
   }
-  param {
-    lr_mult: 1
-    decay_mult: 0
-  }
-  shared_center_loss_param {
+  center_loss_param {
     num_output: 7994
-    margin:0
+    margin:5
     type: L2
-    gamma_shared: True
     center_filler {
       type: "xavier"
-    }
-    gamma_filler{
-      type:"constant"
-      value:1
     }
   }
   loss_weight: 0.01
   loss_weight: 0.0
-}
-
-layer {
-  name: "L2length"
-  type: "Reduction"
-  bottom: "fc5"
-  top: "L2length"
-  reduction_param {
-    operation: SUMSQ
-    axis: 1
-  }
-}
-layer {
-  name: "mean_length"
-  type: "Reduction"
-  bottom: "L2length"
-  top: "mean_length"
-  reduction_param {
-    operation: MEAN
-    axis: 0
-  }
 }
 

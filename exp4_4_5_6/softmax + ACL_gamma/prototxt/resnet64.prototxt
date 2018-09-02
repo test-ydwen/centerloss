@@ -11,8 +11,8 @@ layer {
     mirror: true
   }
   image_data_param {
-    source: "/media/sdc/kpzhang/list/vgg2_train.txt"
-    root_folder: "/media/sdc/kpzhang/data/vgg2/aligned/"
+    source: "/home/kpzhang/list/vgg2_train.txt"
+    root_folder: "/home/kpzhang/data/vgg2/aligned/"
     batch_size:128
     shuffle: true
   }
@@ -2444,31 +2444,22 @@ layer {
 ############## cls ##############
 layer {
   name: "fc6"
-  type: "MarginInnerProduct"
+  type: "InnerProduct"
   bottom: "fc5"
-  bottom: "label"
   top: "fc6"
-  top: "lambda"
   param {
     name: "center"
     lr_mult: 1
     decay_mult: 1
   }
-  margin_inner_product_param {
+  inner_product_param {
     num_output: 7994
-    type: QUADRUPLE
     weight_filler {
       type: "xavier"
     }
-    base: 1000
-    gamma: 0.1
-    power: 1
-    lambda_min: 5
-    iteration: 0
-    iter_size: 1
+    bias_term: false
   }
 }
-
 layer {
   name: "softmax_loss"
   type: "SoftmaxWithLoss"
@@ -2476,7 +2467,6 @@ layer {
   bottom: "label"
   top: "softmax_loss"
 }
-
 layer {
   name: "shared_center_loss"
   type: "SharedCenterLoss"
@@ -2495,7 +2485,7 @@ layer {
   }
   shared_center_loss_param {
     num_output: 7994
-    margin:2
+    margin:0
     type: L2
     gamma_shared: True
     center_filler {
@@ -2506,29 +2496,8 @@ layer {
       value:1
     }
   }
-  loss_weight: 0.0000
+  loss_weight: 0.01
   loss_weight: 0.0
 }
 
-
-layer {
-  name: "L2length"
-  type: "Reduction"
-  bottom: "fc5"
-  top: "L2length"
-  reduction_param {
-    operation: SUMSQ
-    axis: 1
-  }
-}
-layer {
-  name: "mean_length"
-  type: "Reduction"
-  bottom: "L2length"
-  top: "mean_length"
-  reduction_param {
-    operation: MEAN
-    axis: 0
-  }
-}
 

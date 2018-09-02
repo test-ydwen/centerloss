@@ -1,4 +1,4 @@
-net: "lw0_0005.prototxt"
+net: "resnet64.prototxt"
 iter_size: 1
 base_lr: 0.1
 lr_policy: "multistep"
@@ -13,7 +13,7 @@ display: 100
 momentum: 0.9
 weight_decay: 0.0005
 snapshot: 1000
-snapshot_prefix: "models/lw0_0005"
+snapshot_prefix: "models/resnet64"
 
 solver_mode: GPU
 layer_wise_reduce: false 
