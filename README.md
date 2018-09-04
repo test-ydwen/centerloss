@@ -20,24 +20,29 @@ This branch is the implementation of the paper "A Comprehensive Study for Center
   * resnet36.prototxt
   * resnet64.prototxt
 - exp4_2
-  * Depth
-  * Parameter_sharing_and_Loss_Weight
+  * Parameter sharing
+  * Loss Weight
   * Radius
   * Training_set
+  * Depth
 - exp4_3
-  * coco
-  * coco + ACL_gamma
-  * normface
   * softmax
-  * softmax + ACL
-  * softmax + ACL_gamma
+  * softmax + contrastive
+  * normface
+  * coco
+  * SphereFace
   * softmax + CL
-  * softmax +contrastive
-  * sphere
-  * sphere + ACL_gamma
-- exp4_4
-  * softmax+ ACL_gamma
-  * sphere+ ACL_gamma
+  * softmax + ACL
+  * softmax + ACL-γ
+  * coco + ACL-γ
+  * sphere + ACL-γ
+- exp4_4 & exp4_5 & exp4_6
+  * softmax
+  * softmax + CL
+  * softmax+ ACL-γ
+  * softmax + CL (ρ=5)
+  * softmax+ ACL-γ (ρ=5)
+  * sphere+ ACL-γ (ρ=5)
 - training_list
   * [link](https://drive.google.com/open?id=1RGchdWY-Yjz4kqB2kqj15jseK90NB3Rn)
 
@@ -46,7 +51,7 @@ This branch is the implementation of the paper "A Comprehensive Study for Center
   * [link](https://drive.google.com/open?id=1w-Tx-N8jDEXsOi_akPPTN-jZcRC-21FP)
 - exp4_3
   * [link](https://drive.google.com/open?id=1WMPbY_dwqs1jeyVu6wy1OqdykfTgkCWw)
-- exp4_4
+- exp4_4 & exp4_5 & exp4_6
   * [link](https://drive.google.com/open?id=1yZdA-CGVgb07brunz8reJVE2jRaKzhIL)
 
 ### Contact 
